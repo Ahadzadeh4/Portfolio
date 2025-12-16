@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+    --MyColor-1: #15d619;
+    --MyColor-2: #f7f7f7;
+    --MyColor-3: #2f7f66;
+    --MyCB: #595959 ;
+
+}
+

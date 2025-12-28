@@ -5,14 +5,37 @@ import { useTheme } from "../Context/ThemeContext";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 import Sidebar from "./Sidebar";
 import { ThemeIcon } from "./Theme/ThemeIcon";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios"
+
+
 
 function Header() {
-    const { theme } = useTheme();
+    const socialIcons: Record<string, any> = {
+        faLinkedin,
+        faGithub,
+        faInstagram,
+    }
+
+    const { theme } = useTheme()
+    const { data } = useQuery({
+        queryKey: ["Socialmedia"],
+        queryFn: () =>
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+                .then((res) => res.data)
+    })
+
+
     return (
         <header className=" fixed w-full ">
             <div className=" border-b-2 border-(--MyCB) flex flex-row flex-nowrap justify-between">
                 <div className="flex flex-row flex-nowrap  sm:max-lg:gap-3.5 gap-4 p-2 min-[1850px]:p-6 items-center justify-start h-10 sm:max-lg:h-8.5  dark:border-white">
-                    <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
+                    {data?.Header?.[0]?.Socialmedia?.map((item: any) => (
+                        <span key={item.id} className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
+                            <a href={item.link}><FontAwesomeIcon icon={socialIcons[item.fontawesome]} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
+                        </span>
+                    ))}
+                    {/* <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
                         <a href="https://www.linkedin.com/in/hosein-ahadzadeh"><FontAwesomeIcon icon={faLinkedin} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
                     </span>
                     <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
@@ -20,11 +43,11 @@ function Header() {
                     </span>
                     <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
                         <a href="https://www.instagram.com/hosein_frontend?utm_source=qr&igsh=MTZ1MzFtODFmaTVrdw=="><FontAwesomeIcon icon={faInstagram} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
-                    </span>
+                    </span> */}
                 </div>
                 <div className="flex justify-start ml-auto lg:hidden">
                     <Sheet>
-                        <SheetTrigger>
+                        <SheetTrigger asChild>
                             <div className="mr-3.5 items-center ">
                                 <button>
                                     <FontAwesomeIcon icon={faBars} className="text-2xl" />

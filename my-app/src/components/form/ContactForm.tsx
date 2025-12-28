@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form"
+import emailjs from "@emailjs/browser"
 import clsx from "clsx";
+import { useState, useEffect } from "react";
 
 function ContactForm() {
     interface FormData {
@@ -8,10 +10,58 @@ function ContactForm() {
         content: string;
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>()
+    const [Error, SetError] = useState<boolean>(false)
+    const [showMessage, setShowMessage] = useState<boolean>(false);
+    const [bounce, setBounce] = useState<boolean>(false)
+    const [isloading, setIsloading] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (!showMessage) return;
+
+
+        setBounce(true);
+
+
+        const bounceTimer = setTimeout(() => {
+            setBounce(false);
+        }, 350);
+
+
+        const messageTimer = setTimeout(() => {
+            setShowMessage(false);
+            SetError(false);
+        }, 4000);
+
+        return () => {
+            clearTimeout(bounceTimer);
+            clearTimeout(messageTimer);
+        };
+    }, [showMessage]);
 
     const onSubmitForm = (data: FormData) => {
-        console.log(data)
+        setIsloading(true)
+        emailjs.send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            {
+                name: data.name,
+                email: data.email,
+                content: data.content
+            },
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+            .then(() => {
+                setIsloading(false)
+                setShowMessage(true)
+                SetError(false)
+                reset()
+            })
+            .catch(() => {
+                setIsloading(false)
+                SetError(true)
+                setShowMessage(false)
+            })
     }
 
     return (
@@ -37,10 +87,12 @@ function ContactForm() {
                 {errors.content && <p>{errors.content.message}</p>}
             </div>
             <button type="submit" className="
+            group
             w-fit
               mx-auto
               px-5
               py-3
+              h-15
               text-sm
               sm:text-base
               md:text-lg
@@ -60,9 +112,23 @@ function ContactForm() {
               transition-all
               duration-300
               shadow-lg
+              cursor-pointer
             ">
-                ارسال پیام
+
+                {isloading ? (
+                    <div className="w-8 h-8 text-center border-4 group-hover:border-gray-300 group-hover:border-t-white/40 border-white/40 border-t-gray-300 dark:border-t-white/40 dark:border-gray-300 rounded-full animate-spin"></div>
+                ) : (
+                    <p className="text-center">ارسال پیام</p>
+                )}
             </button>
+            <div className="p-1 mt-1 text-center min-h-10">
+                {showMessage &&
+                    <p className={`${Error ? "text-red-500" : "text-green-500"} font-bold text-xl ${bounce ? "animate-bounce" : ""}`} style={{ animationDuration: "0.2s" }}>
+
+                        {Error ? "خطا در ارسال پیام❌" : "ارسال پیام با موفقیت انجام شد✔"}
+                    </p>
+                }
+            </div>
         </form>
     )
 }

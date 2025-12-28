@@ -1,12 +1,24 @@
 import { Element } from "react-scroll";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/Context/ThemeContext";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/form/ContactForm";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios"
+import { Telegram , WhatsApp , Envelope } from "@/components/maps/SvgMap";
 
 function Contact() {
-const {theme} = useTheme()
+    const SvgContact: Record<string, any> = {
+        Telegram,
+        WhatsApp,
+        Envelope,
+    }
+    const { theme } = useTheme()
+    const { data } = useQuery({
+        queryKey: ["Contact"],
+        queryFn: () =>
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+                .then((res) => res.data)
+    })
     return (
         <Element name="Contact">
             <section className="flex flex-col 2xl:h-screen min-h-screen  snap-start snap-always bg-(--MyColor-2)  dark:bg-black
@@ -15,38 +27,27 @@ const {theme} = useTheme()
         dark:text-white">
                 <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-20 mt-0 font-vazir justify-center grow ">
                     <div >
-                        <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold min-[300px]:text-3xl min-[300px]:mb-2">ارتباط با من</h1>
+                        <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold min-[300px]:text-3xl min-[300px]:mb-2">{data?.Contact?.[0]?.title}</h1>
                         <p className="text-center text-base md:text-lg xl:text-xl md:mb-7 min-[300px]:mb-3 sm:mb-6 max-w-4xl mx-auto ">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                            طراحان گرافیک است. در این صورت می‌توان امید داشت که تمام دشواری‌های
-                            موجود در ارائه راهکارها به پایان برسد.
+                            {data?.Contact?.[0]?.description}
                         </p>
                     </div>
                     <div>
                         <div>
                             <div dir="rtl" className="flex flex-row justify-center gap-15">
-                                <div>
-                                    <a href="#">
-                                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-15 text-sky-600"><title>Telegram</title><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" /></svg>
-                                    </a>
+                                {data?.Contact?.[0]?.socialmedia_contact?.map((item: any) => {
+                                    const SvgIcon = SvgContact[item.svg];
+                                    return (
+                                        <div key={item.id}>
+                                            <a href="#">
+                                                {SvgIcon && <SvgIcon />}
+                                            </a>
 
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-15 text-green-400"><title>WhatsApp</title><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
-                                    </a>
+                                        </div>
+                                    )
+                                })}
 
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <svg fill={theme ? "black" : "white"} className="dark:fill-white transition-all
-              duration-300" width="62px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <title>envelope</title>
-                                            <path d="M28 3.75h-24c-1.794 0.002-3.248 1.456-3.25 3.25v18c0.002 1.794 1.456 3.248 3.25 3.25h24c1.794-0.001 3.249-1.456 3.25-3.25v-18c-0.002-1.794-1.456-3.248-3.25-3.25h-0zM4 6.25h24c0.219 0.001 0.415 0.097 0.549 0.248l0.001 0.001-12.55 8.964-12.55-8.964c0.135-0.152 0.331-0.248 0.549-0.249h0zM28 25.75h-24c-0.414-0-0.75-0.336-0.75-0.75v-15.571l12.023 8.588c0.031 0.018 0.069 0.037 0.108 0.054l0.008 0.003c0.031 0.018 0.068 0.037 0.107 0.054l0.008 0.003c0.145 0.070 0.315 0.113 0.494 0.118l0.002 0h0.002c0.181-0.005 0.351-0.048 0.503-0.121l-0.008 0.003c0.046-0.020 0.084-0.039 0.12-0.060l-0.006 0.003c0.047-0.020 0.085-0.040 0.121-0.061l-0.006 0.003 12.023-8.588v15.571c-0 0.414-0.336 0.75-0.75 0.75v0z"></path>
-                                        </svg>
-                                    </a>
 
-                                </div>
                             </div>
                         </div>
                         <div className="mt-12">

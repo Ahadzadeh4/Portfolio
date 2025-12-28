@@ -183,3 +183,10 @@
 .skill-title {
   @apply font-inter font-semibold text-sm md:text-base text-center;
 }
+
+html,
+body {
+    height: 100%;
+  overflow: hidden; 
+}
+

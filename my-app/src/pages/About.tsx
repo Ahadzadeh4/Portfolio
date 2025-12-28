@@ -1,12 +1,26 @@
 import { Element, Link } from "react-scroll";
 import PersonallImg from "../assets/images/about/person.jpg";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios"
 
 function About() {
+  const ImgAbout: Record<string, any> = {
+    PersonallImg,
+  }
+
+   const { data } = useQuery({
+        queryKey: ["About"],
+        queryFn: () =>
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+                .then((res) => res.data)
+    })
+
   return (
     <Element name="About">
       <section className="
         min-h-screen
         snap-start
+        snap-always
         flex
         items-center
         bg-(--MyColor-2)
@@ -18,7 +32,7 @@ function About() {
       ">
         <div className="max-w-6xl mx-auto px-6 py-20 text-center">
           <img
-            src={PersonallImg}
+            src={ImgAbout[data?.About?.[0]?.img]}
             alt="hosein image"
             className="
               mx-auto
@@ -52,14 +66,7 @@ function About() {
             text-justify
     [text-align-last:right]
           ">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-              طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
-              که لازم است و برای شرایط خصصان را می طلبد تا با نرم افزارها شناخت بیشتری
-              را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان
-              فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در
-              ارائه راهکارها و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
-              حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-              اساسد.
+             {data?.About?.[0]?.content}
 
 
             </p>
@@ -67,7 +74,7 @@ function About() {
             sm:text-base
             md:text-lg
             lg:text-xl">
-              با استاندارد های بالا
+           {data?.About?.[0]?.description}
             </span>
           </div>
 

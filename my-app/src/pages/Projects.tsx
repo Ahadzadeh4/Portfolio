@@ -39,7 +39,7 @@ function Projects() {
     transition-colors duration-500 ease-in-out">
                                     <div className="flex flex-col flex-nowrap gap-4 text-center justify-center items-center">
                                         <div className="m-2">
-                                            <img src={ImageProjects[item.img]} alt="تصویر پروژه ${item.title}" className="w-[560px] rounded-xl shadow-sm" />
+                                            <img src={ImageProjects[item.img]} loading="lazy" alt={`تصویر پروژه${item.title}`} className="w-[560px] rounded-xl shadow-sm" />
                                         </div>
                                         <h2 className="text-2xl font-bold ">{item.title}</h2>
                                         <p className="text-lg px-2 w-max-lg">{item.description}</p>

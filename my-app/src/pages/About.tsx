@@ -35,6 +35,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 py-20 text-center">
           <img
             src={ImgAbout[data?.About?.[0]?.img]}
+            loading="lazy"
             alt="عکس پروفایل حسین احدزاده"
             className="
               mx-auto

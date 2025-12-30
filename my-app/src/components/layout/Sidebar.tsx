@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { FontawesomeIcons } from "@/components/maps/FontawesomeMap";
+import { FontawesomeIcons } from "@/components/icons/FontawesomeMap";
 import { Link } from "react-scroll"
 
 

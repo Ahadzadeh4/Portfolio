@@ -1,5 +1,5 @@
 import { Element } from "react-scroll";
-import { HTML5, CSS, JavaScript, Tailwind, Bootstrap, React, TypeScript, Vite, Npm, Git } from "../components/maps/SvgMap"
+import { HTML5, CSS, JavaScript, Tailwind, Bootstrap, React, TypeScript, Vite, Npm, Git } from "../components/icons/SvgMap"
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 

@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { FontawesomeIcons } from "@/components/maps/FontawesomeMap";
-import { useTheme } from "../Context/ThemeContext";
-import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { FontawesomeIcons } from "@/components/icons/FontawesomeMap";
+import { useTheme } from "@/Context/ThemeContext";
+import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
 import Sidebar from "./Sidebar";
-import { ThemeIcon } from "./Theme/ThemeIcon";
+import { ThemeIcon } from "../ui/ThemeIcon";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 

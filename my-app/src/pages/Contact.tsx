@@ -1,10 +1,10 @@
 import { Element } from "react-scroll";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/form/ContactForm";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 import type { ComponentType, SVGProps } from "react";
-import { Telegram, WhatsApp, Envelope } from "@/components/maps/SvgMap";
+import { Telegram, WhatsApp, Envelope } from "@/components/icons/SvgMap";
 
 function Contact() {
     const SvgContact: Record<

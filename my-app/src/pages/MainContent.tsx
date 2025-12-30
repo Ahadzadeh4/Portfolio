@@ -5,7 +5,7 @@ import Services from "./Services";
 import Projects from "./Projects";
 import Contact from "./Contact";
 
-function ScrollSnap() {
+function MainContent() {
 
     return (
         <main
@@ -21,4 +21,4 @@ function ScrollSnap() {
     );
 }
 
-export default ScrollSnap;
+export default MainContent;

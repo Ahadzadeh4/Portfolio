@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# پورتفولیوی حسین احدزاده
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+این پروژه یک سایت شخصی / پورتفولیو ساخته شده با **React**, **TypeScript**, **Tailwind CSS** و **Vite** است.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ویژگی‌ها
 
-## React Compiler
+- طراحی واکنش‌گرا (Responsive)
+- بخش‌های مختلف: Hero, About, Portfolio, Contact
+- استفاده از **API برای Social Media links**
+- Lazy Loading تصاویر و Skeleton Loading
+- تم تاریک و روشن (Dark / Light Mode)
+- بهینه‌سازی تصاویر و فایل‌ها برای سرعت بالا
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## نصب و اجرا
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. کلون کردن پروژه:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+git clone https://github.com/Ahadzadeh4/my-portfolio.git
+cd my-portfolio
+نصب dependency ها:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+bash
+Copy code
+npm install
+# یا
+yarn
+اجرای پروژه در حالت توسعه:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+bash
+Copy code
+npm run dev
+# یا
+yarn dev
+ساخت نسخه build برای انتشار:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+bash
+Copy code
+npm run build
+# یا
+yarn build
+اجرای نسخه build (اختیاری):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+bash
+Copy code
+npm run preview

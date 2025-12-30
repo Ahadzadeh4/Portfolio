@@ -8,16 +8,16 @@ import Contact from "./Contact";
 function ScrollSnap() {
 
     return (
-        <div
+        <main
             id="scroll-container"
-            className="h-screen snap-mandatory snap-y overflow-y-scroll scroll-smooth ">
+            className="min-h-screen h-dvh snap-mandatory snap-y overflow-y-scroll scroll-smooth ">
             <Home />
             <About />
             <Skills />
             <Services />
             <Projects />
             <Contact />
-        </div>
+        </main>
     );
 }
 

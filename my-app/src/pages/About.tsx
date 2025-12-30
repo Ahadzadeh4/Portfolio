@@ -4,16 +4,19 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 
 function About() {
-  const ImgAbout: Record<string, any> = {
+  const ImgAbout: Record<string, string> = {
     PersonallImg,
   }
 
-   const { data } = useQuery({
-        queryKey: ["About"],
-        queryFn: () =>
-            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
-                .then((res) => res.data)
-    })
+  const {  data, isLoading, error  } = useQuery({
+    queryKey: ["About"],
+    queryFn: () =>
+      axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+        .then((res) => res.data)
+  })
+
+   if (isLoading) return null;
+    if (error) return null;
 
   return (
     <Element name="About">
@@ -27,13 +30,12 @@ function About() {
         dark:bg-black
         text-black
         dark:text-white
-        transition-all
-        duration-700
+        transition-darkmode
       ">
         <div className="max-w-6xl mx-auto px-6 py-20 text-center">
           <img
             src={ImgAbout[data?.About?.[0]?.img]}
-            alt="hosein image"
+            alt="عکس پروفایل حسین احدزاده"
             className="
               mx-auto
               mb-10
@@ -46,8 +48,7 @@ function About() {
               border-black
               dark:border-white
               shadow-xl
-              transition-all
-              duration-700
+              transition-darkmode
             "
           />
 
@@ -66,7 +67,7 @@ function About() {
             text-justify
     [text-align-last:right]
           ">
-             {data?.About?.[0]?.content}
+              {data?.About?.[0]?.content}
 
 
             </p>
@@ -74,7 +75,7 @@ function About() {
             sm:text-base
             md:text-lg
             lg:text-xl">
-           {data?.About?.[0]?.description}
+              {data?.About?.[0]?.description}
             </span>
           </div>
 
@@ -89,6 +90,7 @@ function About() {
             containerId="scroll-container"
           >
             <button className="
+            cursor-pointer
               mt-12
               px-8
               py-3
@@ -108,10 +110,9 @@ function About() {
               hover:text-black
               dark:hover:bg-white
               dark:hover:text-black
-              transition-all
-              duration-300
+             transition-buttun
               shadow-lg
-            ">
+            "aria-label="رفتن به بخش ارتباط با من">
               ارتباط با من
             </button>
           </Link>

@@ -35,12 +35,12 @@
 }
 
 @theme {
-    --MyColor-1: #15d619;
     --MyColor-2: #f7f7f7;
-    --MyColor-3: #2f7f66;
-    --MyCB: #595959;
     --font-vazir: "Vazir", sans-serif;
     --font-inter: "inter", sans-serif;
+    --breakpoint-test: 1850px;
+    --breakpoint-test2: 300px;
+    --breakpoint-lg: 1027px;
 }
 
 @theme inline {
@@ -154,39 +154,48 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
     }
 }
 
 .skill-card {
-  @apply aspect-square overflow-hidden
-         flex flex-col items-center justify-center gap-4
-         rounded-2xl
-         border border-black/10
-         bg-white/5
-         shadow-md
-         transition
-         hover:-translate-y-1 hover:shadow-xl;
+    @apply aspect-square overflow-hidden flex flex-col items-center justify-center gap-4 rounded-2xl border border-black/10 bg-white/5 shadow-md transition hover:-translate-y-1 hover:shadow-xl;
 }
 
 .skill-icon {
-  @apply block mx-auto
-         w-10 h-10
-         md:w-12 md:h-12
-         max-w-full max-h-full;
+    @apply block mx-auto w-10 h-10 md:w-12 md:h-12 max-w-full max-h-full;
 }
 
 .skill-title {
-  @apply font-inter font-semibold text-sm md:text-base text-center;
+    @apply font-inter font-semibold text-sm md:text-base text-center;
 }
 
 html,
 body {
-    height: 100%;
-  overflow: hidden; 
+    @apply h-full w-full overflow-hidden
+}
+
+.transition-darkmode {
+    @apply transition-colors duration-700 
+}
+
+.transition-buttun{
+    @apply transition-colors duration-300
+}
+
+
+
+.sidebar-item{
+    @apply w-[140px] dark:hover:border-white border-none border-white lg:hover:shadow-md lg:border-(--MyColor-2) lg:hover:border-black dark:border-black cursor-pointer relative py-1 pr-1  border-2  hover:border-2 rounded-md transition duration-300;
+    
+}
+
+.sidebar-text{
+    @apply absolute p-2 -top-1 test:top-0  -translate-x-4  opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap
 }
 

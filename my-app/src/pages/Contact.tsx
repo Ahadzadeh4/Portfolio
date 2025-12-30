@@ -1,49 +1,58 @@
 import { Element } from "react-scroll";
-import { useTheme } from "@/Context/ThemeContext";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/form/ContactForm";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
-import { Telegram , WhatsApp , Envelope } from "@/components/maps/SvgMap";
+import type { ComponentType, SVGProps } from "react";
+import { Telegram, WhatsApp, Envelope } from "@/components/maps/SvgMap";
 
 function Contact() {
-    const SvgContact: Record<string, any> = {
+    const SvgContact: Record<
+        string,
+        ComponentType<SVGProps<SVGSVGElement>>
+    > = {
         Telegram,
         WhatsApp,
         Envelope,
-    }
-    const { theme } = useTheme()
-    const { data } = useQuery({
+    };
+
+    const {  data, isLoading, error } = useQuery({
         queryKey: ["Contact"],
         queryFn: () =>
             axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
                 .then((res) => res.data)
     })
+
+     if (isLoading) return null;
+    if (error) return null;
     return (
         <Element name="Contact">
             <section className="flex flex-col 2xl:h-screen min-h-screen  snap-start snap-always bg-(--MyColor-2)  dark:bg-black
-         transition-all
-        duration-700
+        transition-darkmode
         dark:text-white">
                 <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-20 mt-0 font-vazir justify-center grow ">
                     <div >
-                        <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold min-[300px]:text-3xl min-[300px]:mb-2">{data?.Contact?.[0]?.title}</h1>
-                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-7 min-[300px]:mb-3 sm:mb-6 max-w-4xl mx-auto ">
+                        <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold test2:text-3xl test2:mb-2">{data?.Contact?.[0]?.title}</h1>
+                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-7 test2:mb-3 sm:mb-6 max-w-4xl mx-auto ">
                             {data?.Contact?.[0]?.description}
                         </p>
                     </div>
                     <div>
                         <div>
-                            <div dir="rtl" className="flex flex-row justify-center gap-15">
+                            <div dir="rtl" className="flex flex-row justify-center gap-15" aria-label="راه‌های ارتباطی">
                                 {data?.Contact?.[0]?.socialmedia_contact?.map((item: any) => {
                                     const SvgIcon = SvgContact[item.svg];
                                     return (
-                                        <div key={item.id}>
-                                            <a href="#">
+                                        <li className="list-none" key={item.id}>
+                                            <a href={item.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label={item.title}
+                                            >
                                                 {SvgIcon && <SvgIcon />}
                                             </a>
 
-                                        </div>
+                                        </li>
                                     )
                                 })}
 

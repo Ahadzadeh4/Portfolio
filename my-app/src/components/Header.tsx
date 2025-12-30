@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons"
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontawesomeIcons } from "@/components/maps/FontawesomeMap";
 import { useTheme } from "../Context/ThemeContext";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 import Sidebar from "./Sidebar";
@@ -11,48 +10,32 @@ import axios from "axios"
 
 
 function Header() {
-    const socialIcons: Record<string, any> = {
-        faLinkedin,
-        faGithub,
-        faInstagram,
-    }
-
     const { theme } = useTheme()
-    const { data } = useQuery({
+    const { data, isLoading, error } = useQuery({
         queryKey: ["Socialmedia"],
         queryFn: () =>
             axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
                 .then((res) => res.data)
     })
-
+    if (isLoading) return null;
+    if (error) return null;
 
     return (
-        <header className=" fixed w-full ">
-            <div className=" border-b-2 border-(--MyCB) flex flex-row flex-nowrap justify-between">
-                <div className="flex flex-row flex-nowrap  sm:max-lg:gap-3.5 gap-4 p-2 min-[1850px]:p-6 items-center justify-start h-10 sm:max-lg:h-8.5  dark:border-white">
+        <header className=" fixed w-full z-50">
+            <div className=" border-b-2 border-black flex flex-row flex-nowrap justify-between">
+                <div className="flex flex-row flex-nowrap  sm:max-lg:gap-3.5 gap-4 p-2 test:p-6 items-center justify-start h-10 sm:max-lg:h-8.5  dark:border-white">
                     {data?.Header?.[0]?.Socialmedia?.map((item: any) => (
-                        <span key={item.id} className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
-                            <a href={item.link}><FontAwesomeIcon icon={socialIcons[item.fontawesome]} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
+                        <span key={item.id} className="rounded-[3px] w-6 h-6 test:w-7 test:h-7 transition-thememode">
+                            <a href={item.link} target="_blank" rel="noopener noreferrer" aria-label={item.name}><FontAwesomeIcon icon={FontawesomeIcons[item.fontawesome]} className="text-2xl test:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
                         </span>
                     ))}
-                    {/* <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
-                        <a href="https://www.linkedin.com/in/hosein-ahadzadeh"><FontAwesomeIcon icon={faLinkedin} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
-                    </span>
-                    <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
-                        <a href="https://github.com/Ahadzadeh4"><FontAwesomeIcon icon={faGithub} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
-                    </span>
-                    <span className="rounded-[3px] w-6 h-6 min-[1850px]:w-7 min-[1850px]:h-7">
-                        <a href="https://www.instagram.com/hosein_frontend?utm_source=qr&igsh=MTZ1MzFtODFmaTVrdw=="><FontAwesomeIcon icon={faInstagram} className="text-2xl min-[1850px]:text-3xl" color={theme === 'dark' ? "white" : "#595959"} /></a>
-                    </span> */}
                 </div>
                 <div className="flex justify-start ml-auto lg:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
-                            <div className="mr-3.5 items-center ">
-                                <button>
-                                    <FontAwesomeIcon icon={faBars} className="text-2xl" />
-                                </button>
-                            </div>
+                            <button className="mr-3.5 items-center flex " aria-label="Open menu">
+                                <FontAwesomeIcon icon={FontawesomeIcons.faBars} className="text-2xl" />
+                            </button>
                         </SheetTrigger>
                         <SheetContent>
                             <Sidebar />
@@ -60,9 +43,7 @@ function Header() {
                                 <div className="ml-4">
                                     <ThemeIcon />
                                 </div>
-
                             </div>
-
                         </SheetContent>
                     </Sheet>
                 </div>
@@ -70,7 +51,6 @@ function Header() {
                     <div className="mr-7">
                         <ThemeIcon />
                     </div>
-
                 </div>
             </div>
         </header>

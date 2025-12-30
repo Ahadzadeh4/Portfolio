@@ -11,7 +11,7 @@ function ContactForm() {
     }
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>()
-    const [Error, SetError] = useState<boolean>(false)
+    const [hasError, SetHasError] = useState<boolean>(false)
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const [bounce, setBounce] = useState<boolean>(false)
     const [isloading, setIsloading] = useState<boolean>(false)
@@ -22,7 +22,6 @@ function ContactForm() {
 
         setBounce(true);
 
-
         const bounceTimer = setTimeout(() => {
             setBounce(false);
         }, 350);
@@ -30,7 +29,7 @@ function ContactForm() {
 
         const messageTimer = setTimeout(() => {
             setShowMessage(false);
-            SetError(false);
+            SetHasError(false);
         }, 4000);
 
         return () => {
@@ -54,36 +53,35 @@ function ContactForm() {
             .then(() => {
                 setIsloading(false)
                 setShowMessage(true)
-                SetError(false)
+                SetHasError(false)
                 reset()
             })
             .catch(() => {
                 setIsloading(false)
-                SetError(true)
+                SetHasError(true)
                 setShowMessage(false)
             })
     }
-
     return (
-        <form onSubmit={handleSubmit(onSubmitForm)} className="flex flex-col gap-4 max-w-4xl" dir="rtl">
+        <form onSubmit={handleSubmit(onSubmitForm)} className="flex flex-col gap-4 max-w-4xl " dir="rtl">
             <div className="flex flex-row flex-nowrap gap-4">
                 <div className="flex-1">
-                    <input type="text" className={clsx('border-2 flex-1 w-full border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl', errors.name && 'bg-red-300  border-red-700')} placeholder="نام" {...register("name", { required: "نام الزامی است" })} />
+                    <input id="name" type="text" className={clsx('border-2 flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl transition-thememode', errors.name && 'bg-red-300  border-red-700')} placeholder="نام" {...register("name", { required: "نام الزامی است" })} aria-invalid={errors.name ? "true" : "false"} aria-describedby={errors.name ? "name-error" : undefined} />
                     {errors.name && <p>{errors.name.message}</p>}
                 </div>
                 <div className="flex-1">
-                    <input type="text" className={clsx('border-2 flex-1 w-full  border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl', errors.email && 'bg-red-300 border-red-700')} placeholder="ایمیل" {...register("email", {
+                    <input id="email" type="email" className={clsx('border-2 transition-thememode flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl', errors.email && 'bg-red-300 border-red-700')} placeholder="ایمیل" {...register("email", {
                         required: "ایمیل الزامی است",
                         pattern: {
                             value: /^\S+@\S+$/i,
                             message: "ایمیل معتبر نیست",
                         }
-                    })} />
+                    })} aria-invalid={errors.email ? "true" : "false"} aria-describedby={errors.email ? "name-error" : undefined} />
                     {errors.email && <p>{errors.email.message}</p>}
                 </div>
             </div>
             <div>
-                <textarea id="content" className={clsx(' w-full h-[200px] resize-none border-2 border-(--MyColor-2) outline-none shadow-xl p-4  rounded-xl text-xl', errors.content && 'bg-red-300 border-red-700')} placeholder="پیام" {...register("content", { required: "پیام را وارد کنید" })} ></textarea>
+                <textarea id="content" className={clsx(' w-full h-[200px] resize-none border-2 border-(--MyColor-2) transition-thememode outline-none shadow-xl p-4  rounded-xl text-xl  placeholder:text-gray-400  dark:placeholder:text-gray-500', errors.content && 'bg-red-300 border-red-700')} placeholder="پیام" {...register("content", { required: "پیام را وارد کنید" })} aria-invalid={errors.content ? "true" : "false"} aria-describedby={errors.content ? "name-error" : undefined} ></ textarea>
                 {errors.content && <p>{errors.content.message}</p>}
             </div>
             <button type="submit" className="
@@ -92,7 +90,7 @@ function ContactForm() {
               mx-auto
               px-5
               py-3
-              h-15
+              h-[60px]
               text-sm
               sm:text-base
               md:text-lg
@@ -109,11 +107,11 @@ function ContactForm() {
               hover:text-black
               dark:hover:bg-white
               dark:hover:text-black
-              transition-all
-              duration-300
+              transition-buttun
               shadow-lg
               cursor-pointer
-            ">
+              disabled:opacity-60 disabled:cursor-not-allowed
+            " >
 
                 {isloading ? (
                     <div className="w-8 h-8 text-center border-4 group-hover:border-gray-300 group-hover:border-t-white/40 border-white/40 border-t-gray-300 dark:border-t-white/40 dark:border-gray-300 rounded-full animate-spin"></div>
@@ -123,9 +121,9 @@ function ContactForm() {
             </button>
             <div className="p-1 mt-1 text-center min-h-10">
                 {showMessage &&
-                    <p className={`${Error ? "text-red-500" : "text-green-500"} font-bold text-xl ${bounce ? "animate-bounce" : ""}`} style={{ animationDuration: "0.2s" }}>
+                    <p className={`${hasError ? "text-red-500" : "text-green-500"} font-bold text-xl ${bounce ? "animate-bounce" : ""}`} style={{ animationDuration: "0.2s" }}>
 
-                        {Error ? "خطا در ارسال پیام❌" : "ارسال پیام با موفقیت انجام شد✔"}
+                        {hasError ? "خطا در ارسال پیام❌" : "ارسال پیام با موفقیت انجام شد✔"}
                     </p>
                 }
             </div>

@@ -185,7 +185,7 @@
 
 html,
 body {
-    @apply h-full w-full overflow-hidden text-[16px]
+    @apply h-full w-full overflow-hidden
 }
 
 .transition-darkmode {

@@ -1,5 +1,5 @@
 import { Element } from "react-scroll";
-import project1 from "@/assets/images/projects/P.png";
+import project1 from "@/assets/images/projects/projectimg.jpg";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 

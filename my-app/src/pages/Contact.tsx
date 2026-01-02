@@ -16,14 +16,14 @@ function Contact() {
         Envelope,
     };
 
-    const {  data, isLoading, error } = useQuery({
+    const { data, isLoading, error } = useQuery({
         queryKey: ["Contact"],
         queryFn: () =>
             axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
                 .then((res) => res.data)
     })
 
-     if (isLoading) return null;
+    if (isLoading) return null;
     if (error) return null;
     return (
         <Element name="Contact">
@@ -35,6 +35,9 @@ function Contact() {
                         <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold test2:text-3xl test2:mb-2">{data?.Contact?.[0]?.title}</h1>
                         <p className="text-center text-base md:text-lg xl:text-xl md:mb-8.5 test2:mb-4.5 sm:mb-7 max-w-4xl mx-auto ">
                             {data?.Contact?.[0]?.description}
+                        </p>
+                        <p className="text-center text-base md:text-lg xl:text-xl m-1.5">
+                            ایمیل من : hoseinahadzadeh0@gmail.com
                         </p>
                     </div>
                     <div>
@@ -51,7 +54,7 @@ function Contact() {
                                             >
                                                 {SvgIcon && <SvgIcon />}
                                             </a>
-<h2 className="flex justify-center font-inter text-base text-center">{item.title}</h2>
+                                            <h2 className="flex justify-center font-inter text-base text-center">{item.title}</h2>
                                         </li>
                                     )
                                 })}

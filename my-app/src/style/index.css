@@ -199,3 +199,6 @@ body {
     @apply absolute p-2 -top-1 test:top-0 -translate-x-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap
 }
 
+* {
+  box-sizing: border-box;
+}

@@ -8,7 +8,7 @@
 
 - طراحی واکنش‌گرا (Responsive)
 - بخش‌های مختلف: Hero, About, Portfolio, Contact
-- استفاده از **API برای Social Media links**
+- استفاده از **API *
 - Lazy Loading تصاویر و Skeleton Loading
 - تم تاریک و روشن (Dark / Light Mode)
 - بهینه‌سازی تصاویر و فایل‌ها برای سرعت بالا

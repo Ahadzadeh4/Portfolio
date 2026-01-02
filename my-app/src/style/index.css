@@ -10,10 +10,6 @@
   padding: 0;
 }
 
-html{
-    font-size: 16px;
-}
-
 @font-face {
     font-family: 'Vazir';
     src: url("/fonts/vazir/Vazir.woff2")format("woff2"),
@@ -189,7 +185,7 @@ html{
 
 html,
 body {
-    @apply h-full w-full overflow-hidden
+    @apply h-full w-full overflow-hidden text-[16px]
 }
 
 .transition-darkmode {

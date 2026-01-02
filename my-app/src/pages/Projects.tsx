@@ -1,5 +1,5 @@
 import { Element } from "react-scroll";
-import project1 from "../assets/images/projects/portfolio.png";
+import project1 from "@/assets/images/projects/P.png";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 
@@ -10,7 +10,7 @@ function Projects() {
     const {  data, isLoading, error } = useQuery({
         queryKey: ["Projects"],
         queryFn: () =>
-            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
                 .then((res) => res.data)
     })
 

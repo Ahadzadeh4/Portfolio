@@ -20,7 +20,7 @@ function Skills() {
     const {  data, isLoading, error } = useQuery({
         queryKey: ["Skills"],
         queryFn: () =>
-            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
                 .then((res) => res.data)
     })
 
@@ -28,19 +28,20 @@ function Skills() {
     if (error) return null;
     return (
         <Element name="Skills">
-            <section className="min-h-screen snap-start bg-(--MyColor-2)  dark:bg-black
+            <section className="min-h-screen xl:h-screen snap-start bg-(--MyColor-2)  dark:bg-black
         .transition-darkmode
          snap-always
         dark:text-white">
-                <div className="max-w-7xl mx-auto px-4 py-20">
+                <div className=" mx-auto px-4 py-20 ">
                     <div>
                         <h1 className="font-vazir text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-6 font-bold test2:text-3xl test2:mb-2 ">{data?.Skills?.[0]?.title}</h1>
                         <p className="font-vazir text-center text-base md:text-lg xl:text-xl mb-14 test2:mb-10 max-w-4xl mx-auto ">
                             {data?.Skills?.[0]?.description}
                         </p>
                     </div>
-                    <div
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6 test2:gap-1 sm:max-lg:gap-3">
+                    <div className="flex justify-center">
+                        <div
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 lg:grid-cols-5 lg:gap-6 test2:gap-1 sm:max-lg:gap-3  ">
                         {data?.Skills?.[0]?.skills.map((item: any) => {
                             const SvgIcon = SvgSkills[item.svg];
                             return (
@@ -53,6 +54,8 @@ function Skills() {
                             )
                         })}
                     </div>
+                    </div>
+                    
                 </div>
             </section>
         </Element>

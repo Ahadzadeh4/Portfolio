@@ -119,6 +119,7 @@ function ContactForm() {
                     <p className="text-center">ارسال پیام</p>
                 )}
             </button>
+            
             <div className="p-1 mt-1 text-center min-h-10">
                 {showMessage &&
                     <p className={`${hasError ? "text-red-500" : "text-green-500"} font-bold text-xl ${bounce ? "animate-bounce" : ""}`} style={{ animationDuration: "0.2s" }}>

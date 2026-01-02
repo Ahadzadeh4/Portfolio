@@ -40,7 +40,7 @@
     --font-inter: "inter", sans-serif;
     --breakpoint-test: 1850px;
     --breakpoint-test2: 300px;
-    --breakpoint-lg: 1027px;
+    /* --breakpoint-lg: 1027px; */
 }
 
 @theme inline {
@@ -164,7 +164,7 @@
 }
 
 .skill-card {
-    @apply aspect-square overflow-hidden flex flex-col items-center justify-center gap-4 rounded-2xl border border-black/10 bg-white/5 shadow-md transition hover:-translate-y-1 hover:shadow-xl;
+    @apply overflow-hidden flex flex-col items-center justify-center justify-self-center gap-4 rounded-2xl border border-black/10 bg-white/5 shadow-md transition hover:-translate-y-1 hover:shadow-xl w-45 h-45 aspect-square;
 }
 
 .skill-icon {
@@ -181,21 +181,21 @@ body {
 }
 
 .transition-darkmode {
-    @apply transition-colors duration-700 
+    @apply transition-colors duration-700
 }
 
-.transition-buttun{
+.transition-buttun {
     @apply transition-colors duration-300
 }
 
 
 
-.sidebar-item{
-    @apply w-[140px] dark:hover:border-white border-none border-white lg:hover:shadow-md lg:border-(--MyColor-2) lg:hover:border-black dark:border-black cursor-pointer relative py-1 pr-1  border-2  hover:border-2 rounded-md transition duration-300;
-    
+.sidebar-item {
+    @apply w-[140px] dark:hover:border-white border-none border-white lg:hover:shadow-md lg:border-(--MyColor-2) lg:hover:border-black dark:border-black cursor-pointer relative py-1 pr-1 border-2 hover:border-2 rounded-md transition duration-300;
+
 }
 
-.sidebar-text{
-    @apply absolute p-2 -top-1 test:top-0  -translate-x-4  opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap
+.sidebar-text {
+    @apply absolute p-2 -top-1 test:top-0 -translate-x-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap
 }
 

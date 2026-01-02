@@ -1,17 +1,17 @@
 import { Element, Link } from "react-scroll";
-import PersonallImg from "../assets/images/about/person.jpg";
+import person from "../assets/images/about/info.jfif"
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios"
 
 function About() {
   const ImgAbout: Record<string, string> = {
-    PersonallImg,
+    person,
   }
 
   const {  data, isLoading, error  } = useQuery({
     queryKey: ["About"],
     queryFn: () =>
-      axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+      axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
         .then((res) => res.data)
   })
 
@@ -40,7 +40,7 @@ function About() {
             className="
               mx-auto
               mb-10
-              w-60
+              w-[566px]
               sm:w-72
               md:w-80
               lg:w-96
@@ -64,13 +64,10 @@ function About() {
             leading-relaxed
             max-w-3xl
             mx-auto
-            
             text-justify
-    [text-align-last:right]
+    [text-align-last:center]
           ">
               {data?.About?.[0]?.content}
-
-
             </p>
             <span className="block mt-4 font-medium text-center text-sm
             sm:text-base

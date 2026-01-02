@@ -19,7 +19,7 @@ function Contact() {
     const {  data, isLoading, error } = useQuery({
         queryKey: ["Contact"],
         queryFn: () =>
-            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
                 .then((res) => res.data)
     })
 
@@ -33,7 +33,7 @@ function Contact() {
                 <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-20 mt-0 font-vazir justify-center grow ">
                     <div >
                         <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold test2:text-3xl test2:mb-2">{data?.Contact?.[0]?.title}</h1>
-                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-7 test2:mb-3 sm:mb-6 max-w-4xl mx-auto ">
+                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-8.5 test2:mb-4.5 sm:mb-7 max-w-4xl mx-auto ">
                             {data?.Contact?.[0]?.description}
                         </p>
                     </div>
@@ -43,7 +43,7 @@ function Contact() {
                                 {data?.Contact?.[0]?.socialmedia_contact?.map((item: any) => {
                                     const SvgIcon = SvgContact[item.svg];
                                     return (
-                                        <li className="list-none" key={item.id}>
+                                        <li className="list-none flex flex-col flex-nowrap gap-1.5" key={item.id}>
                                             <a href={item.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -51,7 +51,7 @@ function Contact() {
                                             >
                                                 {SvgIcon && <SvgIcon />}
                                             </a>
-
+<h2 className="flex justify-center font-inter text-base text-center">{item.title}</h2>
                                         </li>
                                     )
                                 })}

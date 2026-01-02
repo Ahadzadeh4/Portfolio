@@ -14,7 +14,7 @@ function Header() {
     const { data, isLoading, error } = useQuery({
         queryKey: ["Socialmedia"],
         queryFn: () =>
-            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-portfolio/main/data.json")
+            axios.get("https://raw.githubusercontent.com/Ahadzadeh4/my-data/refs/heads/main/data.json")
                 .then((res) => res.data)
     })
     if (isLoading) return null;

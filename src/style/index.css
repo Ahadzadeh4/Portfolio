@@ -4,9 +4,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body{
-  box-sizing: border-box;
-}
+
 
 @font-face {
     font-family: 'Vazir';
@@ -165,7 +163,7 @@ body{
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground ;
     }
 }
 
@@ -183,7 +181,7 @@ body{
 
 html,
 body {
-    @apply h-full w-full overflow-hidden
+    @apply h-full w-full overflow-x-hidden box-border
 }
 
 .transition-darkmode {

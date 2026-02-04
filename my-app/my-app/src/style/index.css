@@ -4,8 +4,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body{
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {

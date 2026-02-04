@@ -40,7 +40,7 @@ function AppContent() {
   if (error) {
     return (
       <div className="text-center text-red-500 mt-10 transition-all duration-1000">
-       {error}
+        خطا {error}
       </div>
     );
   }

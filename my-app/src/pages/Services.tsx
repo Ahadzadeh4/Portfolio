@@ -23,7 +23,7 @@ function Services() {
          transition-all
         duration-700
         dark:text-white ">
-                <div className="max-w-7xl mx-auto px-4 pt-12.5 font-vazir items-center justify-center my-auto">
+                <div className="max-w-7xl mx-auto px-4 py-12.5 font-vazir items-center justify-center my-auto">
                     <div >
                         <h1 className="text-center lg:text-5xl sm:max-lg:text-4xl p-2 sm:mb-1.5 font-bold test2:text-3xl test2:mb-1">{data?.Services?.[0]?.title}</h1>
                         <p className="text-center text-base md:text-lg xl:text-xl md:mb-4 test2:mb-2 sm:mb-6 max-w-4xl mx-auto ">

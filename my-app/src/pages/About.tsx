@@ -21,7 +21,7 @@ function About() {
   return (
     <Element name="About">
       <section className="
-        min-h-screen
+        h-screen
         snap-start
         snap-always
         flex
@@ -40,10 +40,10 @@ function About() {
             className="
               mx-auto
               mb-10
-              w-[566px]
+              sm:mb-8
+              w-[250px]
               sm:w-72
-              md:w-80
-              lg:w-96
+              lg:w-80
               rounded-2xl
               border-4
               border-black
@@ -59,8 +59,7 @@ function About() {
             font-normal
             text-sm
             sm:text-base
-            md:text-lg
-            lg:text-xl
+            lg:text-lg
             leading-relaxed
             max-w-3xl
             mx-auto
@@ -69,10 +68,9 @@ function About() {
           ">
               {data?.About?.[0]?.content}
             </p>
-            <span className="block mt-4 font-medium text-center text-sm
+            <span className="block mt-4 sm:mt-3 font-medium text-center text-sm
             sm:text-base
-            md:text-lg
-            lg:text-xl">
+            lg:text-lg">
               {data?.About?.[0]?.description}
             </span>
           </div>
@@ -89,13 +87,15 @@ function About() {
           >
             <button className="
             cursor-pointer
+            lg:mt-4
+            md:mt-8
               mt-12
               px-8
               py-3
               text-sm
               sm:text-base
-              md:text-lg
-              lg:text-xl
+              md:text-base
+              lg:text-lg
               font-medium
               rounded-xl
               border-2

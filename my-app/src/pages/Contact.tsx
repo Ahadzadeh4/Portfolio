@@ -27,13 +27,13 @@ function Contact() {
     if (error) return null;
     return (
         <Element name="Contact">
-            <section className="flex flex-col 2xl:h-screen min-h-screen  snap-start snap-always bg-(--MyColor-2)  dark:bg-black
+            <section className="flex flex-col h-screen  snap-start snap-always bg-(--MyColor-2)  dark:bg-black
         transition-darkmode
         dark:text-white">
-                <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-20 mt-0 font-vazir justify-center grow ">
-                    <div className="md:mb-8.5 test2:mb-4.5 sm:mb-7 max-w-4xl mx-auto" >
+                <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-13 mt-0 font-vazir justify-center grow ">
+                    <div className=" test2:mb-3  max-w-4xl mx-auto" >
                         <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold test2:text-3xl test2:mb-2">{data?.Contact?.[0]?.title}</h1>
-                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-8.5 test2:mb-4.5 sm:mb-7 max-w-4xl mx-auto ">
+                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-5.5 test2:mb-2.5  max-w-4xl mx-auto ">
                             {data?.Contact?.[0]?.description}
                         </p>
                         <p className="text-center text-base md:text-lg xl:text-xl " dir="rtl">
@@ -62,8 +62,8 @@ function Contact() {
 
                             </div>
                         </div>
-                        <div className="mt-12">
-                            <div className="p-2">
+                        <div className="mt-3">
+                            <div className="p-1">
                                 <ContactForm />
                             </div>
                         </div>

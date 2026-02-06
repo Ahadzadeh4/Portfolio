@@ -66,11 +66,11 @@ function ContactForm() {
         <form onSubmit={handleSubmit(onSubmitForm)} className="flex flex-col gap-4 max-w-4xl " dir="rtl">
             <div className="flex flex-row flex-nowrap gap-4">
                 <div className="flex-1">
-                    <input id="name" type="text" className={clsx('border-2 flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl transition-thememode', errors.name && 'bg-red-300  border-red-700')} placeholder="نام" {...register("name", { required: "نام الزامی است" })} aria-invalid={errors.name ? "true" : "false"} aria-describedby={errors.name ? "name-error" : undefined} />
+                    <input id="name" type="text" className={clsx('border-2 flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-3  rounded-xl text-xl transition-thememode', errors.name && 'bg-red-300  border-red-700')} placeholder="نام" {...register("name", { required: "نام الزامی است" })} aria-invalid={errors.name ? "true" : "false"} aria-describedby={errors.name ? "name-error" : undefined} />
                     {errors.name && <p>{errors.name.message}</p>}
                 </div>
                 <div className="flex-1">
-                    <input id="email" type="email" className={clsx('border-2 transition-thememode flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-4  rounded-xl text-xl', errors.email && 'bg-red-300 border-red-700')} placeholder="ایمیل" {...register("email", {
+                    <input id="email" type="email" className={clsx('border-2 transition-thememode flex-1 w-full placeholder:text-gray-400  dark:placeholder:text-gray-500 border-(--MyColor-2) outline-none shadow-lg p-3  rounded-xl text-xl', errors.email && 'bg-red-300 border-red-700')} placeholder="ایمیل" {...register("email", {
                         required: "ایمیل الزامی است",
                         pattern: {
                             value: /^\S+@\S+$/i,
@@ -81,7 +81,7 @@ function ContactForm() {
                 </div>
             </div>
             <div>
-                <textarea id="content" className={clsx(' w-full h-[200px] resize-none border-2 border-(--MyColor-2) transition-thememode outline-none shadow-xl p-4  rounded-xl text-xl  placeholder:text-gray-400  dark:placeholder:text-gray-500', errors.content && 'bg-red-300 border-red-700')} placeholder="پیام" {...register("content", { required: "پیام را وارد کنید" })} aria-invalid={errors.content ? "true" : "false"} aria-describedby={errors.content ? "name-error" : undefined} ></ textarea>
+                <textarea id="content" className={clsx(' w-full h-[120px] resize-none border-2 border-(--MyColor-2) transition-thememode outline-none shadow-xl p-4  rounded-xl text-xl  placeholder:text-gray-400  dark:placeholder:text-gray-500', errors.content && 'bg-red-300 border-red-700')} placeholder="پیام" {...register("content", { required: "پیام را وارد کنید" })} aria-invalid={errors.content ? "true" : "false"} aria-describedby={errors.content ? "name-error" : undefined} ></ textarea>
                 {errors.content && <p>{errors.content.message}</p>}
             </div>
             <button type="submit" className="

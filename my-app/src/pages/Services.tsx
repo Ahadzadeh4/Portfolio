@@ -19,7 +19,7 @@ function Services() {
     if (error) return null;
     return (
         <Element name="Services">
-            <section className="lg:h-screen min-h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
+            <section className=" min-h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
          transition-all
         duration-700
         dark:text-white ">

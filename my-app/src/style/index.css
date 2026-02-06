@@ -168,7 +168,7 @@
 }
 
 .skill-card {
-    @apply overflow-hidden flex flex-col items-center justify-center justify-self-center gap-4 rounded-2xl border border-black/10 bg-white/5 shadow-md transition hover:-translate-y-1 hover:shadow-xl w-45 h-45 aspect-square;
+    @apply overflow-hidden flex flex-col items-center justify-center justify-self-center gap-4 rounded-2xl border border-black/10 bg-white/5 shadow-md transition hover:-translate-y-1 hover:shadow-xl w-35 h-35 aspect-square;
 }
 
 .skill-icon {
@@ -181,7 +181,7 @@
 
 html,
 body {
-    @apply h-full w-full overflow-x-hidden box-border
+    @apply min-h-screen w-full overflow-x-hidden box-border
 }
 
 .transition-darkmode {

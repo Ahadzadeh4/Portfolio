@@ -28,7 +28,7 @@ function Skills() {
     if (error) return null;
     return (
         <Element name="Skills">
-            <section className="min-h-screen xl:h-screen snap-start bg-(--MyColor-2)  dark:bg-black
+            <section className="min-h-screen sm:h-screen snap-start bg-(--MyColor-2)  dark:bg-black
         .transition-darkmode
          snap-always
         dark:text-white">
@@ -41,14 +41,14 @@ function Skills() {
                     </div>
                     <div className="flex justify-center">
                         <div
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 lg:grid-cols-5 lg:gap-6 test2:gap-1 sm:max-lg:gap-3  ">
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 lg:grid-cols-5 lg:gap-2.5 test2:gap-1 sm:max-lg:gap-1  ">
                         {data?.Skills?.[0]?.skills.map((item: any) => {
                             const SvgIcon = SvgSkills[item.svg];
                             return (
-                                <div key={item.id} className="m-3 p-3  border-2 border-black rounded-sm shadow-2xl skill-card ">
+                                <div key={item.id} className="m-2 p-2 border-2 border-black rounded-sm shadow-2xl skill-card ">
                                     <div className="flex flex-col flex-nowrap gap-4">
                                         {SvgIcon && <SvgIcon aria-label={item.title} />}
-                                        <h3 className="font-bold font-inter text-xl text-center">{item.title}</h3>
+                                        <h3 className="font-bold font-inter text-xl text-center transition-colors duration-300">{item.title}</h3>
                                     </div>
                                 </div>
                             )

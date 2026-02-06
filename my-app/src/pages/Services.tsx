@@ -19,7 +19,7 @@ function Services() {
     if (error) return null;
     return (
         <Element name="Services">
-            <section className=" h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
+            <section className="min-h-screen lg:h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
          transition-all
         duration-700
         dark:text-white ">
@@ -33,7 +33,8 @@ function Services() {
                     <div>
                         <div >
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 test2:grid-cols-1 gap-7 justify-center py-1 md:[&>div:nth-child(odd)]:justify-self-end
-    md:[&>div:nth-child(even)]:justify-self-start lg:[&>div:nth-child(odd)]:justify-self-center lg:[&>div:nth-child(even)]:justify-self-center test2:overflow-auto test2:h-[415px] lg:h-auto lg:overflow-hidden test2:bg-gray-100 lg:bg-(--MyColor-2)">
+    md:[&>div:nth-child(even)]:justify-self-start lg:[&>div:nth-child(odd)]:justify-self-center lg:[&>div:nth-child(even)]:justify-self-center test2:overflow-auto test2:h-[415px] lg:h-auto lg:overflow-hidden test2:bg-gray-100 dark:bg-black lg:bg-(--MyColor-2)  transition-all
+        duration-700">
                             {data?.Services?.[0]?.services.map((item: any) => (
                                 <div key={item.id} className="w-[300px] dark:bg-white/6 h-[340px] overflow-hidden transition-darkmode shadow-lg rounded-xl px-3 py-1 justify-center items-center bg-white justify-self-center">
                                     <div className="flex flex-col flex-nowrap gap-1.5 text-center justify-center items-center ">

@@ -41,7 +41,7 @@ function Skills() {
                     </div>
                     <div className="flex justify-center">
                         <div
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 lg:grid-cols-5 lg:gap-2.5 test2:gap-1 sm:max-lg:gap-1  ">
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 lg:grid-cols-5 lg:gap-2.5 test2:gap-1 sm:max-lg:gap-1 test2:overflow-auto test2:h-[350px] lg:h-auto test2:bg-gray-100 lg:bg-(--MyColor-2) lg:overflow-hidden">
                         {data?.Skills?.[0]?.skills.map((item: any) => {
                             const SvgIcon = SvgSkills[item.svg];
                             return (

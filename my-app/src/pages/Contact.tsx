@@ -27,7 +27,7 @@ function Contact() {
     if (error) return null;
     return (
         <Element name="Contact">
-            <section className="flex flex-col h-screen  snap-start snap-always bg-(--MyColor-2)  dark:bg-black
+            <section className="flex flex-col lg:h-screen min-h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
         transition-darkmode
         dark:text-white">
                 <div className=" flex lg:block flex-1 flex-col max-w-7xl mx-auto px-4 lg:mt-13 mt-0 font-vazir justify-center grow ">

@@ -32,7 +32,7 @@ function Projects() {
                     <div>
                         <div className="grid 2xl:grid-cols-3 test2:gap-7.5 test2:grid-cols-1 test2:[&>div:nth-child(odd)]:justify-self-center
     [&>div:nth-child(even)]:justify-self-center sm:gap-10 lg:max-2xl:gap-10 lg:max-2xl:grid-cols-2 lg:max-2xl:[&>div:nth-child(odd)]:justify-self-end
-    lg:max-2xl:[&>div:nth-child(even)]:justify-self-start 2xl:gap-35 justify-center py-3">
+    lg:max-2xl:[&>div:nth-child(even)]:justify-self-start 2xl:gap-35 justify-center py-3 ">
                             {data?.projects?.[0]?.projects?.map((item: any) => (
                                 <div key={item.id} className="sm:w-[420px] sm:h-[480px] bg-white dark:bg-white/10 
     shadow-xl rounded-xl px-4 py-5 flex justify-center items-center 

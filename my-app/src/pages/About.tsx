@@ -86,6 +86,7 @@ function About() {
             containerId="scroll-container"
           >
             <button className="
+            font-vazir
             cursor-pointer
             lg:mt-4
             md:mt-8
@@ -96,7 +97,7 @@ function About() {
               sm:text-base
               md:text-base
               lg:text-lg
-              font-medium
+            
               rounded-xl
               border-2
               border-black

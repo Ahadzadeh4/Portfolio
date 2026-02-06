@@ -19,24 +19,24 @@ function Services() {
     if (error) return null;
     return (
         <Element name="Services">
-            <section className=" min-h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
+            <section className=" h-screen snap-start snap-always bg-(--MyColor-2)  dark:bg-black
          transition-all
         duration-700
         dark:text-white ">
-                <div className="max-w-7xl mx-auto px-4 py-20 font-vazir items-center justify-center my-auto">
+                <div className="max-w-7xl mx-auto px-4 pt-12.5 font-vazir items-center justify-center my-auto">
                     <div >
-                        <h1 className="text-center lg:text-5xl sm:max-lg:text-3xl sm:max-lg:mb-3 p-3 lg:mb-3 font-bold test2:text-3xl test2:mb-2">{data?.Services?.[0]?.title}</h1>
-                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-7 test2:mb-3 sm:mb-6 max-w-4xl mx-auto ">
+                        <h1 className="text-center lg:text-5xl sm:max-lg:text-4xl p-2 sm:mb-1.5 font-bold test2:text-3xl test2:mb-1">{data?.Services?.[0]?.title}</h1>
+                        <p className="text-center text-base md:text-lg xl:text-xl md:mb-4 test2:mb-2 sm:mb-6 max-w-4xl mx-auto ">
                             {data?.Services?.[0]?.description}
                         </p>
                     </div>
                     <div>
                         <div >
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 test2:grid-cols-1 gap-7 justify-center py-3 md:[&>div:nth-child(odd)]:justify-self-end
-    md:[&>div:nth-child(even)]:justify-self-start lg:[&>div:nth-child(odd)]:justify-self-center lg:[&>div:nth-child(even)]:justify-self-center ">
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 test2:grid-cols-1 gap-7 justify-center py-1 md:[&>div:nth-child(odd)]:justify-self-end
+    md:[&>div:nth-child(even)]:justify-self-start lg:[&>div:nth-child(odd)]:justify-self-center lg:[&>div:nth-child(even)]:justify-self-center test2:overflow-auto test2:h-[415px] lg:h-auto lg:overflow-hidden test2:bg-gray-100 lg:bg-(--MyColor-2)">
                             {data?.Services?.[0]?.services.map((item: any) => (
-                                <div key={item.id} className="w-[340px] dark:bg-white/6 h-[380px] overflow-hidden transition-darkmode shadow-xl rounded-xl px-3 py-4 justify-center items-center bg-white justify-self-center">
-                                    <div className="flex flex-col flex-nowrap gap-2 text-center justify-center items-center ">
+                                <div key={item.id} className="w-[300px] dark:bg-white/6 h-[340px] overflow-hidden transition-darkmode shadow-lg rounded-xl px-3 py-1 justify-center items-center bg-white justify-self-center">
+                                    <div className="flex flex-col flex-nowrap gap-1.5 text-center justify-center items-center ">
                                         <div className="m-4">
                                             <FontAwesomeIcon aria-label={item.title} icon={FontawesomeIcons[item.fontawesome]} className={`text-7xl ${item.FontawesomeColor} `}></FontAwesomeIcon>
                                         </div>
@@ -45,7 +45,7 @@ function Services() {
                                         <ul className=" flex flex-col gap-1 list-none mt-1">
                                             {item.advantages.map((adv: any) => (
 
-                                                <li className="mb-3 flex items-start gap-3 justify-center" dir="rtl" key={adv.id}>
+                                                <li className="mb-0.5 flex items-start gap-3 justify-center" dir="rtl" key={adv.id}>
                                                     <span className="text-green-500">✔</span>
                                                     <span className="text-base">{adv.text}</span>
 
@@ -63,15 +63,15 @@ function Services() {
                         </div>
                         
                         <article >
-                            <div className="py-1 pt-3 ">
+                            <div className="py-0.5 pt-2.5 ">
                                 <div className="flex flex-col flex-nowrap justify-center text-center">
                                     <div className="flex items-center justify-center">
                                         <span className="flex-1 h-px bg-gray-200"></span>
                                         <h3 className="text-2xl font-bold whitespace-nowrap mx-10">چرا من؟</h3>
                                         <span className="flex-1 h-px bg-gray-200"></span>
                                     </div>
-                                    <div className="test2:text-center test2:mx-auto lg:mx-0 test2:py-5 lg:py-1">
-                                        <ul className="grid lg:grid-cols-3 md:grid-cols-2 test2:grid-cols-1 gap-3 py-3 lg:justify-items-center">
+                                    <div className="test2:text-center test2:mx-auto lg:mx-0 test2:py-3 lg:py-0.5">
+                                        <ul className="grid lg:grid-cols-3 md:grid-cols-2 test2:grid-cols-1 gap-2 py-1.35 lg:justify-items-center">
                                             {data?.Services?.[0]?.WhyMe.map((item: any) => (
                                                 <li className="whitespace-nowrap flex items-start" key={item.id} dir="rtl">
                                                     <span className="text-green-500 ml-3">✔</span>
@@ -86,7 +86,7 @@ function Services() {
 
                                 </div>
                             </div>
-                            <div className="py-1">
+                            <div className="">
                                 <div className="flex flex-col flex-nowrap justify-center text-center">
                                     <div>
                                         <h3 className="text-2xl font-bold">آماده ای پروژه رو شروع کنیم؟</h3>
@@ -101,9 +101,9 @@ function Services() {
                                             containerId="scroll-container">
                                             <button className="
                                             cursor-pointer
-              mt-4
-              px-8
-              py-3
+              mt-3
+              px-6
+              py-2
               text-sm
               sm:text-base
               md:text-lg
